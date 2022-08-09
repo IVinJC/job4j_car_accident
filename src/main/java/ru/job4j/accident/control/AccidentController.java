@@ -21,7 +21,6 @@ public class AccidentController {
         model.addAttribute("accidents", accidentService.findAll());
         return "accident";
     }
-
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("types", accidentService.getListAccidentType());
