@@ -19,6 +19,15 @@
     <title>Accident</title>
 </head>
 <body>
+<div class="navbar-nav">
+    <a class="nav-item nav-link active" href="#">Главная <span class="sr-only">(current)</span></a>
+    <a class="nav-item nav-link" th:href="@{/create}">Добавить инцидент</a>
+</div>
+<tbody>
+<tr th:each="name: ${userList}">
+    <td th:text="${name}"/>
+</tr>
+</tbody>
 ${userName}
 ${userList}
 <table class="table">
