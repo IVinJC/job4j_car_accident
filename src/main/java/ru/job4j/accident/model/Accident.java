@@ -8,6 +8,8 @@ public class Accident {
     private String text;
     private String address;
 
+    private AccidentType type;
+
     public Accident() {
     }
 

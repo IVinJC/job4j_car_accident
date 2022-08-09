@@ -23,7 +23,7 @@
     <title>Автонарушение</title>
 </head>
 <body>
-<form  th:action="@{/save}" method="POST">
+<form th:action="@{/save}" method="POST">
     <table>
         <tr>
             <td>Название:</td>
@@ -38,8 +38,18 @@
             <td><input type="text" name="address"></td>
         </tr>
         <tr>
-            <td colspan='2'><input name="submit" type="submit" value="Сохранить" /></td>
+            <td>Тип:</td>
+            <td>
+                <select name="type.id">
+                    < tr th:each="type: ${types}">
+            <td th:text="${type.id}${type.name}"></td>
         </tr>
+        </select>
+        </tr>
+        <tr>
+            <td colspan='2'><input name="submit" type="submit" value="Сохранить"/></td>
+        </tr>
+    </table>
     </table>
 </form>
 </body>
