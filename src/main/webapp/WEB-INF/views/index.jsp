@@ -20,8 +20,12 @@
 </head>
 <body>
 ${userName}
-<table th:each="name:${userList}">
-    <tr th:text="${name}"/>
+${userList}
+<table class="table">
+    <tbody>
+    <tr th:each="name: ${userList}">
+        <td th:text="${name}"></td>
+    </tr>
 </table>
 
 <ul th:each="name : ${userList}">
