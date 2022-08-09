@@ -40,7 +40,7 @@ public class AccidentController {
 
     @GetMapping("/update")
     public String update(@RequestParam("id") int id, Model model) {
-        model.addAttribute("accident", accidentService.findById(id).get());
+        model.addAttribute("accident", accidentService.findById(id));
         return "accident/update";
     }
 }
