@@ -38,7 +38,7 @@ public class AccidentController {
     }
     @PostMapping("/edit")
     public String edit(@ModelAttribute Accident accident, HttpServletRequest req) {
-        accidentService.update(accident);
+        accidentService.update(accident, accident.getId());
         String[] ids = req.getParameterValues("rIds");
         return "redirect:/";
     }
