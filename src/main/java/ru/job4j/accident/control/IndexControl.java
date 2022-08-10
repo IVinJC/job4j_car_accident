@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.job4j.accident.repository.AccidentJdbcTemplate;
+import ru.job4j.accident.repository.AccidentRepository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,9 +12,9 @@ import java.util.List;
 
 @Controller
 public class IndexControl {
-    private final AccidentJdbcTemplate accidents;
+    private final AccidentRepository accidents;
 
-    public IndexControl(AccidentJdbcTemplate accidents) {
+    public IndexControl(AccidentRepository accidents) {
         this.accidents = accidents;
     }
     @GetMapping("/")
