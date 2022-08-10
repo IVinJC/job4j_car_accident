@@ -42,8 +42,18 @@
             <td>
                 <select name="type.id">
                     < tr th:each="type: ${types}">
-            <td th:text="${type.id}${type.name}"></td>
+            < td th:text="${type.id}${type.name}">
+            </select>
+            </td>
         </tr>
+        </tr>
+        <tr>
+            <td>Статьи:</td>
+            <td>
+                <select name="rIds" multiple>
+                    < tr th:each="rule: ${rules}">
+                    <option value="${rule.id}" th:value="${city.id}"></option>
+        < /tr>
         </select>
         </tr>
         <tr>

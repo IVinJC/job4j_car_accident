@@ -1,12 +1,15 @@
 package ru.job4j.accident.model;
 
 import java.util.Objects;
+import java.util.Set;
 
 public class Accident {
     private int id;
     private String name;
     private String text;
     private String address;
+
+    private Set<Rule> rules;
 
     private AccidentType type;
 

@@ -1,3 +1,4 @@
+/*
 package ru.job4j.accident;
 
 import org.springframework.web.WebApplicationInitializer;
@@ -29,3 +30,4 @@ public class WebInit implements WebApplicationInitializer {
         registration.addMapping("/");
     }
 }
+*/
