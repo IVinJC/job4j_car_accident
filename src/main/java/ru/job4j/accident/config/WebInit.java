@@ -1,5 +1,4 @@
-/*
-package ru.job4j.accident;
+package ru.job4j.accident.config;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -14,7 +13,7 @@ public class WebInit implements WebApplicationInitializer {
 
     public void onStartup(ServletContext servletCxt) {
         AnnotationConfigWebApplicationContext ac = new AnnotationConfigWebApplicationContext();
-        ac.register(WebConfig.class);
+        ac.register(WebConfig.class, JdbcConfig.class);
         ac.refresh();
 
         CharacterEncodingFilter filter = new CharacterEncodingFilter();
@@ -30,4 +29,3 @@ public class WebInit implements WebApplicationInitializer {
         registration.addMapping("/");
     }
 }
-*/

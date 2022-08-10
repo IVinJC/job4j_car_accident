@@ -19,7 +19,7 @@ public class AccidentMem {
 
     private AccidentMem() {
         accidents.put(1, new Accident(1, "Name1", "Text1", "Address1"));
-        accidents.put(2, new Accident(1, "Name1", "Text1", "Address1"));
+        accidents.put(2, new Accident(2, "Name2", "Text2", "Address2"));
     }
 
     public Collection<Accident> findAll() {
@@ -38,21 +38,4 @@ public class AccidentMem {
     public Accident update(Accident accident) {
         return accidents.replace(accident.getId(), accident);
     }
-
-    public List<AccidentType> getListAccidentType() {
-        List<AccidentType> types = new ArrayList<>();
-        types.add(AccidentType.of(1, "Две машины"));
-        types.add(AccidentType.of(2, "Машина и человек"));
-        types.add(AccidentType.of(3, "Машина и велосипед"));
-        return types;
-    }
-
-    public List<Rule> getListAccidentRule() {
-        List<Rule> rules = new ArrayList<>();
-        rules.add(Rule.of(1, "Статья. 1"));
-        rules.add(Rule.of(2, "Статья. 2"));
-        rules.add(Rule.of(3, "Статья. 3"));
-        return rules;
-    }
-
 }
