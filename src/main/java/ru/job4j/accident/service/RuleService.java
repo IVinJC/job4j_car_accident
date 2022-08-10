@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class RuleService {
+
     private final AccidentDbRule accidentDbRule;
 
     public RuleService(AccidentDbRule accidentDbRule) {
