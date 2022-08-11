@@ -53,6 +53,7 @@ public class AccidentController {
     public String edit(@ModelAttribute Accident accident, HttpServletRequest req) {
         Rule rule = ruleService.findById(accident.getRules().getId());
         accident.setRules(rule);
+
         Type type = typeService.findById(accident.getType().getId());
         accident.setType(type);
         accidentService.update(accident, accident.getId());
