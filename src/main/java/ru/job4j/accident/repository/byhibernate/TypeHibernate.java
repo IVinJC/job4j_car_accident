@@ -1,4 +1,4 @@
-package ru.job4j.accident.repository;
+package ru.job4j.accident.repository.byhibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,5 +37,18 @@ public class TypeHibernate {
 
     public List<Type> findAll() {
         return tx(session -> session.createQuery("from Type", Type.class).list());
+    }
+
+    public Type findById(int id) {
+        return (Type) tx(session -> session.createQuery("from Type r where r.id = id").uniqueResult());
+    }
+
+    public Type update(Type type, int id) {
+        return tx(session -> {
+            return (Type) session.createQuery("update Type r set r.name = :fName where r.id = :fId", Type.class)
+                    .setParameter("fName", type.getName())
+                    .setParameter("fId", id)
+                    .uniqueResult();
+        });
     }
 }

@@ -1,14 +1,14 @@
-package ru.job4j.accident.repository;
+package ru.job4j.accident.repository.byhibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import ru.job4j.accident.model.Accident;
+import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Rule;
 
 import java.util.List;
 import java.util.function.Function;
-
+@Repository
 public class RuleHibernate {
     private final SessionFactory sf;
 
@@ -38,5 +38,18 @@ public class RuleHibernate {
 
     public List<Rule> findAll() {
         return tx(session -> session.createQuery("from Rule", Rule.class).list());
+    }
+
+    public Rule findById(int id) {
+        return (Rule) tx(session -> session.createQuery("from Rule r where r.id = id").uniqueResult());
+    }
+
+    public Rule update(Rule rule, int id) {
+        return tx(session -> {
+            return (Rule) session.createQuery("update Rule r set r.name = :fName where r.id = :fId", Rule.class)
+                    .setParameter("fName", rule.getName())
+                    .setParameter("fId", id)
+                    .uniqueResult();
+        });
     }
 }

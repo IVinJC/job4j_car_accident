@@ -2,7 +2,7 @@ package ru.job4j.accident.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.accident.model.Type;
-import ru.job4j.accident.repository.TypeJdbcTemplate;
+import ru.job4j.accident.repository.byspringjdbc.TypeJdbcTemplate;
 
 import java.util.List;
 
