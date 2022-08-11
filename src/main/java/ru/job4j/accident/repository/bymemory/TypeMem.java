@@ -8,7 +8,6 @@ import java.util.List;
 public class TypeMem {
     private List<Type> types;
 
-
     public TypeMem() {
         types.add(Type.of(1, "Две машины"));
         types.add(Type.of(2, "Машина и человек"));
