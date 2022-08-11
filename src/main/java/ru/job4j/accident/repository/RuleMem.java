@@ -6,10 +6,10 @@ import ru.job4j.accident.model.Rule;
 import java.util.List;
 
 @Repository
-public class AccidentDbRule {
+public class RuleMem {
     private List<Rule> rules;
 
-    public AccidentDbRule(List<Rule> rules) {
+    public RuleMem(List<Rule> rules) {
         rules.add(Rule.of(1, "Статья. 1"));
         rules.add(Rule.of(2, "Статья. 2"));
         rules.add(Rule.of(3, "Статья. 3"));

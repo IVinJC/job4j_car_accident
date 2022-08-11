@@ -41,7 +41,6 @@ public class AccidentJdbcTemplate {
                             rs.getString("name"),
                             rs.getString("text"),
                             rs.getString("address")
-
                     );
                 });
     }

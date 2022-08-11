@@ -11,7 +11,7 @@ public class Accident {
 
     private Set<Rule> rules;
 
-    private AccidentType type;
+    private Type type;
 
     public Accident() {
     }

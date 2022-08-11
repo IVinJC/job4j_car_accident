@@ -1,24 +1,33 @@
 package ru.job4j.accident.service;
 
 import org.springframework.stereotype.Service;
-import ru.job4j.accident.model.AccidentType;
-import ru.job4j.accident.repository.AccidentDbType;
+import ru.job4j.accident.model.Type;
+import ru.job4j.accident.repository.TypeJdbcTemplate;
 
 import java.util.List;
 
 @Service
 public class TypeService {
-    private final AccidentDbType accidentDbType;
+    private final TypeJdbcTemplate typeJdbcTemplate;
 
-    public TypeService(AccidentDbType accidentDbType) {
-        this.accidentDbType = accidentDbType;
+    public TypeService(TypeJdbcTemplate typeJdbcTemplate) {
+        this.typeJdbcTemplate = typeJdbcTemplate;
     }
 
-    public List<AccidentType> getTypes() {
-        return accidentDbType.getTypes();
+
+    public Type add(Type type) {
+        return typeJdbcTemplate.add(type);
     }
 
-    public void setTypes(List<AccidentType> types) {
-        accidentDbType.setTypes(types);
+    public List<Type> findAll() {
+        return typeJdbcTemplate.findAll();
+    }
+
+    public Type findById(int id) {
+        return typeJdbcTemplate.findById(id);
+    }
+
+    public Type update(Type type, int id) {
+        return typeJdbcTemplate.update(type, id);
     }
 }

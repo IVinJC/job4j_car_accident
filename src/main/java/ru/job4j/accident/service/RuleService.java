@@ -1,27 +1,32 @@
 package ru.job4j.accident.service;
 
 import org.springframework.stereotype.Service;
-import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.model.Rule;
-import ru.job4j.accident.repository.AccidentDbRule;
+import ru.job4j.accident.repository.RuleJdbcTemplate;
 
 import java.util.List;
-
 @Service
 public class RuleService {
+    private final RuleJdbcTemplate ruleJdbcTemplate;
 
-    private final AccidentDbRule accidentDbRule;
-
-    public RuleService(AccidentDbRule accidentDbRule) {
-        this.accidentDbRule = accidentDbRule;
+    public RuleService(RuleJdbcTemplate ruleJdbcTemplate) {
+        this.ruleJdbcTemplate = ruleJdbcTemplate;
     }
 
-    public List<Rule> getTypes() {
-        return accidentDbRule.getRules();
+
+    public Rule add(Rule rule) {
+        return ruleJdbcTemplate.add(rule);
     }
 
-    public void setTypes(List<Rule> rules) {
-        accidentDbRule.setRules(rules);
+    public List<Rule> findAll() {
+        return ruleJdbcTemplate.findAll();
     }
 
+    public Rule findById(int id) {
+        return ruleJdbcTemplate.findById(id);
+    }
+
+    public Rule update(Rule rule, int id) {
+        return ruleJdbcTemplate.update(rule, id);
+    }
 }
