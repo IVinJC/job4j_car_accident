@@ -8,9 +8,7 @@ public class Accident {
     private String name;
     private String text;
     private String address;
-
-    private Set<Rule> rules;
-
+    private Rule rules;
     private Type type;
 
     public Accident() {
@@ -21,6 +19,22 @@ public class Accident {
         this.name = name;
         this.text = text;
         this.address = address;
+    }
+
+    public Rule getRules() {
+        return rules;
+    }
+
+    public void setRules(Rule rules) {
+        this.rules = rules;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public int getId() {

@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.service.AccidentService;
+import ru.job4j.accident.model.Rule;
+import ru.job4j.accident.model.Type;
+import ru.job4j.accident.service.AccidentSpringDataRepositoryService;
 import ru.job4j.accident.service.RuleService;
 import ru.job4j.accident.service.TypeService;
 
@@ -15,11 +17,12 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class AccidentController {
-    private final AccidentService accidentService;
+    private final AccidentSpringDataRepositoryService accidentService;
     private final RuleService ruleService;
     private final TypeService typeService;
 
-    public AccidentController(AccidentService accidentService, RuleService ruleService, TypeService typeService) {
+    public AccidentController(AccidentSpringDataRepositoryService accidentService,
+                              RuleService ruleService, TypeService typeService) {
         this.accidentService = accidentService;
         this.ruleService = ruleService;
         this.typeService = typeService;
@@ -39,11 +42,19 @@ public class AccidentController {
 
     @PostMapping("/save")
     public String save(@ModelAttribute Accident accident) {
+        Rule rule = ruleService.findById(accident.getRules().getId());
+        accident.setRules(rule);
+        Type type = typeService.findById(accident.getType().getId());
+        accident.setType(type);
         accidentService.add(accident);
         return "redirect:/";
     }
     @PostMapping("/edit")
     public String edit(@ModelAttribute Accident accident, HttpServletRequest req) {
+        Rule rule = ruleService.findById(accident.getRules().getId());
+        accident.setRules(rule);
+        Type type = typeService.findById(accident.getType().getId());
+        accident.setType(type);
         accidentService.update(accident, accident.getId());
         String[] ids = req.getParameterValues("rIds");
         return "redirect:/";
