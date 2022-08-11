@@ -37,7 +37,7 @@ public class AccidentController {
         return "accident/create";
     }
 
-    @GetMapping("/save")
+    @PostMapping("/save")
     public String save(@ModelAttribute Accident accident) {
         accidentService.add(accident);
         return "redirect:/";
