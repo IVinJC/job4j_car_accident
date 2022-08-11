@@ -3,17 +3,15 @@ package ru.job4j.accident.repository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.stereotype.Repository;
-import ru.job4j.accident.model.Accident;
+import ru.job4j.accident.model.Type;
 
 import java.util.List;
 import java.util.function.Function;
 
-@Repository
-public class AccidentHibernate {
+public class TypeHibernate {
     private final SessionFactory sf;
 
-    public AccidentHibernate(SessionFactory sf) {
+    public TypeHibernate(SessionFactory sf) {
         this.sf = sf;
     }
 
@@ -32,12 +30,12 @@ public class AccidentHibernate {
         }
     }
 
-    public Accident add(Accident accident) {
-        tx(session -> session.save(accident));
-        return accident;
+    public Type add(Type type) {
+        tx(session -> session.save(type));
+        return type;
     }
 
-    public List<Accident> findAll() {
-        return tx(session -> session.createQuery("from Accident", Accident.class).list());
+    public List<Type> findAll() {
+        return tx(session -> session.createQuery("from Type", Type.class).list());
     }
 }
