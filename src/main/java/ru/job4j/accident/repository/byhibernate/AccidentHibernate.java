@@ -38,7 +38,8 @@ public class AccidentHibernate {
     }
 
     public List<Accident> findAll() {
-        return tx(session -> session.createQuery("from Accident", Accident.class).list());
+        return tx(session -> session.createQuery(""
+                + "select distinct c from Accident c join fetch c.rule join fetch c.type", Accident.class).list());
     }
 
     public Accident findById(int id) {

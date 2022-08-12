@@ -41,7 +41,9 @@ public class RuleHibernate {
     }
 
     public Rule findById(int id) {
-        return (Rule) tx(session -> session.createQuery("from Rule r where r.id = id").uniqueResult());
+        return (Rule) tx(session -> session.createQuery("from Rule r where r.id = :fId")
+                .setParameter("fId", id)
+                .uniqueResult());
     }
 
     public Rule update(Rule rule, int id) {
