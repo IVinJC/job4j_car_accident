@@ -42,8 +42,8 @@ public class AccidentController {
 
     @PostMapping("/save")
     public String save(@ModelAttribute Accident accident) {
-        Rule rule = ruleService.findById(accident.getRules().getId());
-        accident.setRules(rule);
+        Rule rule = ruleService.findById(accident.getRule().getId());
+        accident.setRule(rule);
         Type type = typeService.findById(accident.getType().getId());
         accident.setType(type);
         accidentService.add(accident);
@@ -51,9 +51,8 @@ public class AccidentController {
     }
     @PostMapping("/edit")
     public String edit(@ModelAttribute Accident accident, HttpServletRequest req) {
-        Rule rule = ruleService.findById(accident.getRules().getId());
-        accident.setRules(rule);
-
+        Rule rule = ruleService.findById(accident.getRule().getId());
+        accident.setRule(rule);
         Type type = typeService.findById(accident.getType().getId());
         accident.setType(type);
         accidentService.update(accident, accident.getId());

@@ -40,4 +40,27 @@ public class AccidentHibernate {
     public List<Accident> findAll() {
         return tx(session -> session.createQuery("from Accident", Accident.class).list());
     }
+
+    public Accident findById(int id) {
+        return (Accident) tx(session -> session.createQuery("from Accident r where r.id = :fId")
+                .setParameter("fId", id)
+                .uniqueResult());
+    }
+
+    public Accident update(Accident accident, int id) {
+        return tx(session -> session.createQuery("update Accident r set "
+                        + "r.name = :fName,"
+                        + "r.text = :fText,"
+                        + "r.address = :fAddress,"
+                        + "r.rule = :fRule,"
+                        + "r.type = :fType"
+                        + " where r.id = :fId", Accident.class)
+                .setParameter("fName", accident.getName())
+                .setParameter("fText", accident.getText())
+                .setParameter("fAddress", accident.getAddress())
+                .setParameter("fRule", accident.getRule())
+                .setParameter("fType", accident.getType())
+                .setParameter("fId", id)
+                .uniqueResult());
+    }
 }

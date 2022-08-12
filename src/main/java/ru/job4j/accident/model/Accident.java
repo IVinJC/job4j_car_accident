@@ -1,14 +1,21 @@
 package ru.job4j.accident.model;
 
+import javax.persistence.*;
 import java.util.Objects;
-import java.util.Set;
-
+@Entity
+@Table(name = "accident")
 public class Accident {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String text;
     private String address;
-    private Rule rules;
+    @ManyToOne
+    @JoinColumn(name = "id_rule")
+    private Rule rule;
+    @ManyToOne
+    @JoinColumn(name = "id_type")
     private Type type;
 
     public Accident() {
@@ -21,12 +28,12 @@ public class Accident {
         this.address = address;
     }
 
-    public Rule getRules() {
-        return rules;
+    public Rule getRule() {
+        return rule;
     }
 
-    public void setRules(Rule rules) {
-        this.rules = rules;
+    public void setRule(Rule rule) {
+        this.rule = rule;
     }
 
     public Type getType() {

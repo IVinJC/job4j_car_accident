@@ -1,12 +1,21 @@
 package ru.job4j.accident.model;
 
+import javax.persistence.*;
 import java.util.Objects;
-
-
+@Entity
+@Table (name = "type")
 public class Type {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
-
     private String name;
+
+    public Type() {
+    }
+
+    public Type(int id) {
+        this.id = id;
+    }
 
     public static Type of(int id, String name) {
         Type type = new Type();

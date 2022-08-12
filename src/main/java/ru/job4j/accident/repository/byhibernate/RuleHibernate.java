@@ -45,11 +45,9 @@ public class RuleHibernate {
     }
 
     public Rule update(Rule rule, int id) {
-        return tx(session -> {
-            return (Rule) session.createQuery("update Rule r set r.name = :fName where r.id = :fId", Rule.class)
-                    .setParameter("fName", rule.getName())
-                    .setParameter("fId", id)
-                    .uniqueResult();
-        });
+        return tx(session -> (Rule) session.createQuery("update Rule r set r.name = :fName where r.id = :fId", Rule.class)
+                .setParameter("fName", rule.getName())
+                .setParameter("fId", id)
+                .uniqueResult());
     }
 }

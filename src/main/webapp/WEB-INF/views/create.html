@@ -20,9 +20,21 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
 
+
     <title>Автонарушение</title>
 </head>
 <body>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#">Главная <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" th:href="@{/accident}">Нарушения</a>
+        <a class="nav-item nav-link" th:href="@{/rules}">Rules</a>
+        <a class="nav-item nav-link" th:href="@{/types}">Типы нарушений</a>
+        <a class="nav-item nav-link" th:href="@{/create}">Добавить нарушение</a>
+        <a class="nav-item nav-link" th:href="@{/formAddRule}">Добавить кандидата</a>
+        <a class="nav-item nav-link" th:href="@{/formAddType}">Добавить города</a>
+    </div>
+</div>
 <form th:action="@{/save}" method="POST">
     <table>
         <tr>

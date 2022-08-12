@@ -44,11 +44,9 @@ public class TypeHibernate {
     }
 
     public Type update(Type type, int id) {
-        return tx(session -> {
-            return (Type) session.createQuery("update Type r set r.name = :fName where r.id = :fId", Type.class)
-                    .setParameter("fName", type.getName())
-                    .setParameter("fId", id)
-                    .uniqueResult();
-        });
+        return tx(session -> session.createQuery("update Type r set r.name = :fName where r.id = :fId", Type.class)
+                .setParameter("fName", type.getName())
+                .setParameter("fId", id)
+                .uniqueResult());
     }
 }
